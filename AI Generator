@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Generator</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    #generate-btn {
+      font-size: 24px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    #output {
+      font-size: 20px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Generator</h1>
+  <button id="generate-btn">Generate AI Output</button>
+  <div id="output"></div>
+
+  <script>
+    function generateAIOutput() {
+      // Replace this with your AI generation logic
+      // You can use external libraries or APIs to generate AI content
+
+      // For demonstration purposes, let's generate a random number
+      var randomNumber = Math.floor(Math.random() * 100);
+
+      // Update the output element with the generated content
+      document.getElementById('output').textContent = "Generated AI Output: " + randomNumber;
+    }
+
+    document.getElementById('generate-btn').addEventListener('click', generateAIOutput);
