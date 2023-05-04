@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flappy Bird</title>
+  <style>
+    #game-container {
+      position: relative;
+      width: 400px;
+      height: 500px;
+      margin: 0 auto;
+      border: 2px solid #ccc;
+      overflow: hidden;
+    }
+    #bird {
+      position: absolute;
+      width: 40px;
+      height: 30px;
+      background-color: yellow;
+      /* Add bird image or customize styling as needed */
+    }
+    .pipe {
+      position: absolute;
+      width: 80px;
+      height: 300px;
+      background-color: green;
+      /* Customize pipe styling as needed */
+    }
+    #score {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Flappy Bird</h1>
+  <div id="game-container">
+    <div id="bird"></div>
+    <!-- Pipe elements will be dynamically created in JavaScript -->
+  </div>
+  <div id="score">Score: 0</div>
+
+  <script src="game.js"></script>
+</body>
+</html>
