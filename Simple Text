@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Box Example</title>
+</head>
+<body>
+  <label for="myTextbox">Enter your name:</label>
+  <input type="text" id="myTextbox" name="myTextbox">
+</body>
+</html>
