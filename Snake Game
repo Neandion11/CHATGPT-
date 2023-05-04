@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake Game</title>
+  <style>
+    #game-container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+      border: 2px solid #ccc;
+      overflow: hidden;
+    }
+    .snake-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: green;
+    }
+    .food {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Snake Game</h1>
+  <div id="game-container"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const gameContainer = document.getElementById('game-container');
+      const gridSize = 20; // Size of each grid cell
+      const initialSnakeLength = 3; // Initial length of the snake
+      const snakeSpeed = 200; // Speed of snake movement in milliseconds
+
+      let snake = [{ x: 0, y: 0 }]; // Snake's initial position
+      let direction = 'right'; // Initial direction of the snake
+      let food = { x: 0, y: 0 }; // Food's position
+
+      function createSnake() {
+        snake.forEach(segment => {
+          const snakeDot = document.createElement('div');
+          snakeDot.classList.add('snake-dot');
+          snakeDot.style.left = segment.x * gridSize + 'px';
+          snakeDot.style.top = segment.y * gridSize + 'px';
+          gameContainer.appendChild(snakeDot);
+        });
+      }
+
+      function createFood() {
+        food.x = Math.floor(Math.random() * (gameContainer.offsetWidth / gridSize));
+        food.y = Math.floor(Math.random() * (gameContainer.offsetHeight / gridSize));
+
+        const foodElement = document.createElement('div');
+        foodElement.classList.add('food');
+        foodElement.style.left = food.x * gridSize + 'px';
+        foodElement.style.top = food.y * gridSize + 'px';
+        gameContainer.appendChild(foodElement);
+      }
+
+      function moveSnake() {
+        const head = { x: snake[0].x, y: snake[0].y };
+
+        switch (direction) {
+          case 'up':
+            head.y -= 1;
+            break;
+          case 'down':
+            head.y += 1;
+            break;
+          case 'left':
+            head.x -= 1;
+            break;
+          case 'right':
+            head.x += 1;
+            break;
+        }
+
+        snake.unshift(head); // Add the new head to the snake
+
+        // Check collision with the food
+        if (head.x === food.x && head.y === food.y) {
+          // Increase snake length and create new food
+          createFood();
+        } else {
+          snake.pop(); // Remove the tail segment
+        }
+
+        // Check collision with the walls or snake's body
+        if (
+          head.x < 0 ||
+          head.y < 0 ||
+          head.x >= gameContainer.offsetWidth / gridSize ||
+          head.y >= gameContainer.offsetHeight / gridSize ||
+          isSnakeCollision()
+        ) {
+          gameOver();
+          return;
+        }
+
+        updateSnakePosition();
+      }
+
+      function isSnakeCollision() {
+        const head = snake[0];
+        for (let i = 1; i < snake.length; i++) {
+          if (snake[i].x === head.x && snake[i].y === head.y) {
+            return true;
