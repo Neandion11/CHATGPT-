@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Countdown Clock</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    #countdown {
+      font-size: 48px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Countdown Clock</h1>
+  <div id="countdown"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const countdownElement = document.getElementById('countdown');
+
+      // Set the target date and time for the countdown (format: "Year, Month Index, Day, Hour, Minute, Second")
+      const targetDate = new Date("2023, 5, 1, 00, 00, 00");
+
+      function updateCountdown() {
+        const currentDate = new Date();
+        const timeDifference = targetDate - currentDate;
+
+        if (timeDifference <= 0) {
+          countdownElement.textContent = "Countdown has ended!";
+          return;
+        }
+
+        // Calculate the remaining time in days, hours, minutes, and seconds
+        let days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+        let hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        let minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+        // Display the countdown
+        countdownElement.textContent = `Time Remaining: ${days} days, ${hours} hours, ${minutes} minutes, ${seconds} seconds`;
+
+        setTimeout(updateCountdown, 1000); // Update the countdown every second
+      }
+
+      updateCountdown();
+    });
+  </script>
+</body>
+</html>
