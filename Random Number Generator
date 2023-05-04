@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Number Generator</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 32px;
+    }
+
+    #generate-btn {
+      font-size: 24px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    #output {
+      font-size: 48px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Random Number Generator</h1>
+  <button id="generate-btn">Generate Random Number</button>
+  <div id="output"></div>
+
+  <script>
+    document.getElementById('generate-btn').addEventListener('click', function() {
+      const outputElement = document.getElementById('output');
+
+      // Generate a random number between 1 and 100 (you can modify the range as needed)
+      const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+      // Display the random number
+      outputElement.textContent = randomNumber;
+    });
+  </script>
+</body>
+</html>
