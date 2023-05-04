@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clock with Seconds</title>
+  <style>
+    #clock {
+      font-family: "Arial", sans-serif;
+      font-size: 48px;
+      text-align: center;
+      margin-top: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+
+  <script>
+    function updateTime() {
+      var currentTime = new Date();
+      var hours = currentTime.getHours();
+      var minutes = currentTime.getMinutes();
+      var seconds = currentTime.getSeconds();
+
+      hours = (hours < 10 ? "0" : "") + hours;
+      minutes = (minutes < 10 ? "0" : "") + minutes;
+      seconds = (seconds < 10 ? "0" : "") + seconds;
+
+      var clockDiv = document.getElementById("clock");
+      clockDiv.textContent = hours + ":" + minutes + ":" + seconds;
+    }
+
+    setInterval(updateTime, 1000);
+  </script>
+</body>
+</html>
