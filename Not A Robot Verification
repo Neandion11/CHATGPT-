@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Robot Verification</title>
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      text-align: center;
+      margin-top: 200px;
+    }
+
+    #verify-btn {
+      font-size: 24px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    #verification-message {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Robot Verification</h1>
+  <button id="verify-btn">Click to Verify</button>
+  <p id="verification-message"></p>
+
+  <script>
+    var isVerified = false;
+
+    function verify() {
+      isVerified = true;
+      document.getElementById('verification-message').textContent = "Verification successful!";
+      document.getElementById('verify-btn').disabled = true;
+    }
+
+    document.getElementById('verify-btn').addEventListener('click', verify);
+  </script>
+</body>
+</html>
